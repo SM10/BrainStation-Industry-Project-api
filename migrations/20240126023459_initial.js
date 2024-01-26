@@ -23,6 +23,13 @@ exports.up = function (knex) {
       table.increments("id").primary();
       table.json("traffic_pref").notNullable();
       table.string("url").notNullable();
+      table.string("name").notNullable();
+      table.text("img_url").notNullable();
+      table.integer("price").notNullable();
+      table.text("information").notNullable();
+      table.string("ship_type").notNullable();
+      table.string("destination").notNullable();
+      table.string("departure_port").notNullable();
     });
 };
 

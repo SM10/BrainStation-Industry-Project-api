@@ -8,54 +8,14 @@ const convertResponsesToInt = (responses) => {
   }
 };
 
-const convertResponseToString = (response) => {
-  for (item in response) {
-    response[item] =
-      dictionary.toStr[item][response[item] === 1 ? "one" : "two"];
-  }
-};
-
 const getCruisesByRequest = async (req, res) => {
-  //    responses = req.body
-  //    formatResponses(responses);
-  //   const {
-  //     climate,
-  //     outdoors,
-  //     household,
-  //     party,
-  //     income,
-  //     length,
-  //     adventure,
-  //     spa,
-  //     environmental,
-  //     gaming,
-  //     food,
-  //     fitness,
-  //     shop,
-  //     lodging,
-  //   } = responses
-
-  let responses = {
-    climate: "cold",
-    outdoors: "wilderness",
-    household: "partner",
-    party: "party",
-    income: "luxury",
-    length: "short",
-    adventure: "no",
-    spa: "yes",
-    environmental: "no",
-    gaming: "no",
-    food: "yes",
-    fitness: "yes",
-    shop: "yes",
-    lodging: "no",
-  };
+  responses = req.body;
+  formatResponses(responses);
 
   convertResponsesToInt(responses);
 
   try {
-    const response = await knex("cruise_page");
+    // const response = await knex("cruise_page");
 
     let formattedResponses = response
       .map((cruise) => {
@@ -69,10 +29,6 @@ const getCruisesByRequest = async (req, res) => {
       .sort((a, b) => {
         return b.score - a.score;
       });
-
-    formattedResponses.forEach((response) => {
-      convertResponseToString(response.traffic_pref);
-    });
 
     res.json(formattedResponses);
   } catch (error) {

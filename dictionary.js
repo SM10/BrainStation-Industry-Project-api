@@ -3,12 +3,12 @@ const toInt = {
   cold: 2,
   culture: 1,
   wilderness: 2,
-  family: 1,
-  partner: 2,
+  multiple: 1,
+  single: 2,
   party: 1,
-  laidBack: 2,
+  relaxed: 2,
   luxury: 1,
-  budget: 2,
+  standard: 2,
   short: 1,
   long: 2,
   yes: 1,
@@ -24,17 +24,17 @@ const toStr = {
     one: "culture",
     two: "wilderness",
   },
-  household: {
-    one: "family",
-    two: "partner",
+  group: {
+    one: "multiple",
+    two: "single",
   },
   party: {
     one: "party",
-    two: "laidBack",
+    two: "relaxed",
   },
-  income: {
+  package: {
     one: "luxury",
-    two: "budget",
+    two: "standard",
   },
   length: {
     one: "short",
@@ -44,15 +44,7 @@ const toStr = {
     one: "yes",
     two: "no",
   },
-  spa: {
-    one: "yes",
-    two: "no",
-  },
-  environmental: {
-    one: "yes",
-    two: "no",
-  },
-  gaming: {
+  wellness: {
     one: "yes",
     two: "no",
   },
@@ -60,15 +52,7 @@ const toStr = {
     one: "yes",
     two: "no",
   },
-  fitness: {
-    one: "yes",
-    two: "no",
-  },
   shop: {
-    one: "yes",
-    two: "no",
-  },
-  lodging: {
     one: "yes",
     two: "no",
   },

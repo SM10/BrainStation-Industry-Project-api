@@ -19,6 +19,10 @@ exports.up = function(knex) {
     table.integer("fitness").notNullable(); //Do you care about fitness?    
     table.integer("shop").notNullable(); //Do you want to shop?
     table.integer("lodging").notNullable(); //Will you need a place to stay before or after the cruise? 
+  }).createTable("cruise_page", (table) => {
+    table.increments("id").primary();
+    table.string("header").notNullable();
+    table.string("article").notNullable();
   })
 };
 
@@ -27,5 +31,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists("traffic_pref")
+  return knex.schema.dropTableIfExists("traffic_pref").dropTableIfExists("cruise_page");
 };

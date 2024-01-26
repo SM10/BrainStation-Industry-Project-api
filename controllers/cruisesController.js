@@ -1,6 +1,8 @@
 const knex = require("knex")(require("../knexfile"));
 const dictionary = require("../dictionary");
 
+const threshold = 10;
+
 const convertResponsesToInt = (responses) => {
   for (response in responses) {
     const val = responses[response];
@@ -20,11 +22,18 @@ const getCruisesByRequest = async (req, res) => {
       .map((cruise) => {
         let score = 0;
         for (item in cruise.traffic_pref) {
-          if (cruise.traffic_pref[item] === responses[item]) score++;
+          const val = cruise.traffic_pref[item];
+          if (val === -1) {
+            score++;
+            continue;
+          }
+
+          if (val === responses[item]) score += 2;
         }
         cruise.score = score;
-        if (score > 2) return cruise;
+        return cruise;
       })
+      .filter((cruise) => cruise.score >= threshold)
       .sort((a, b) => {
         return b.score - a.score;
       });

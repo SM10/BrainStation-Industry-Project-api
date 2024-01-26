@@ -21,8 +21,8 @@ exports.up = function(knex) {
     table.integer("lodging").notNullable(); //Will you need a place to stay before or after the cruise? 
   }).createTable("cruise_page", (table) => {
     table.increments("id").primary();
-    table.string("header").notNullable();
-    table.string("article").notNullable();
+    table.json("traffic_pref").notNullable();
+    table.string("url").notNullable();
   })
 };
 

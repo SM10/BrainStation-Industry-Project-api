@@ -10,12 +10,11 @@ const convertResponsesToInt = (responses) => {
 
 const getCruisesByRequest = async (req, res) => {
   responses = req.body;
-  formatResponses(responses);
 
   convertResponsesToInt(responses);
 
   try {
-    // const response = await knex("cruise_page");
+    const response = await knex("cruise_page");
 
     let formattedResponses = response
       .map((cruise) => {
